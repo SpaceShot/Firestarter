@@ -1,7 +1,6 @@
 $(function () {
     if ("geolocation" in navigator) {
         navigator.geolocation;
-        // $('#btnGetCoordinates').click(getGPSCoordinates);
         getGPSCoordinates();
     }
     else {
@@ -71,18 +70,5 @@ function createMap(lat, long) {
     }).addTo(mymap);
 
     L.marker([lat, long]).addTo(mymap);
-
-    // L.circle([51.508, -0.11], {
-    //     color: 'red',
-    //     fillColor: '#f03',
-    //     fillOpacity: 0.5,
-    //     radius: 500
-    // }).addTo(mymap);
-
-    // L.polygon([
-    //     [51.509, -0.08],
-    //     [51.503, -0.06],
-    //     [51.51, -0.047]
-    // ]).addTo(mymap);
 }
 
