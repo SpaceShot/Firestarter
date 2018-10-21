@@ -1,4 +1,12 @@
+var watchId = null;
+var mapCreated = false;
+var imagePreviewElement = null;
+
 $(function () {
+    $('#photo_input').on('change', onPhotoSelected)
+
+    imagePreviewElement = document.getElementById('imagePreview');
+
     if ("geolocation" in navigator) {
         navigator.geolocation;
         getGPSCoordinates();
@@ -9,8 +17,25 @@ $(function () {
     }
 });
 
-var watchId = null;
-var mapCreated = false;
+function onPhotoSelected(event) {
+    var files = $('#photo_input').prop('files');
+    if (files.length > 0) {
+        let file = files[0];
+        if (file.type.startsWith('image/')) {
+            let img = document.createElement("img");
+            img.classList.add("obj");
+            img.file = file;
+            while (imagePreviewElement.firstChild) {
+                imagePreviewElement.removeChild(imagePreviewElement.firstChild);
+            }
+            imagePreviewElement.appendChild(img);
+
+            let reader = new FileReader();
+            reader.onload = (function (aImg) { return function (e) { aImg.src = e.target.result; }; })(img);
+            reader.readAsDataURL(file);
+        }
+    }
+}
 
 function getGPSCoordinates() {
     let numVars = arguments.length;
