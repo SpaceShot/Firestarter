@@ -17,7 +17,5 @@
     "url": "https://github.com/codesandbox-app/static-template/issues"
   },
   "homepage": "https://github.com/codesandbox-app/static-template#readme",
-  "dependencies": {
-    "leaflet": "1.4.0"
-  }
+  "dependencies": {}
 }
